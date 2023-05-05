@@ -626,3 +626,179 @@ function removeChar(str){
 console.log(removeChar('eloquent')); // 'loquen'
 
 console.log('--------------------------------')
+
+/*
+String repeat
+Write a function that accepts an integer n and a string s as parameters, and returns a string of s repeated exactly n times.
+
+Examples (input -> output)
+6, "I"     -> "IIIIII"
+5, "Hello" -> "HelloHelloHelloHelloHello"
+*/
+
+function repeatStr (n, s) {
+    return s.repeat(n); // String.prototype.repeat()
+    /*
+    let str= '';
+    for (let i = 0; i < n; i++) {
+        str += s;
+    }
+    return str;
+    */
+}
+
+console.log(repeatStr(3, "*"));
+console.log(repeatStr(5, "#"));
+console.log(repeatStr(2, "ha "));
+
+console.log('--------------------------------')
+
+/*
+Remove String Spaces
+Write a function that removes the spaces from the string, then return the resultant string.
+
+Examples:
+
+Input -> Output
+"8 j 8   mBliB8g  imjB8B8  jl  B" -> "8j8mBliB8gimjB8B8jlB"
+"8 8 Bi fk8h B 8 BB8B B B  B888 c hl8 BhB fd" -> "88Bifk8hB8BB8BBBB888chl8BhBfd"
+"8aaaaa dddd r     " -> "8aaaaaddddr"
+*/
+
+function noSpace(x){
+  // return x.replaceAll(' ', '');
+  return x.split(' ').join('');
+}
+
+console.log(noSpace("8 j 8   mBliB8g  imjB8B8  jl  B"));
+
+console.log('--------------------------------')
+
+/*
+Find the smallest integer in the array
+Given an array of integers your solution should find the smallest integer.
+
+For example:
+
+Given [34, 15, 88, 2] your solution will return 2
+Given [34, -345, -1, 100] your solution will return -345
+You can assume, for the purpose of this kata, that the supplied array will not be empty.
+*/
+
+function findSmallestInt(args) {
+    return Math.min(...args);
+  }
+
+console.log(findSmallestInt([78,15,232,2,8]), 'Should return the smallest int 2');
+
+
+function findSmallestInt(args) {
+    let min = args[0];
+    for (let i = 0; i < args.length; i++) {
+      min = min < args[i] ? min : args[i]; // ternary 
+    }
+    return min;
+}
+
+console.log(findSmallestInt([78,56,232,12,8]), 'Should return the smallest int 8');
+
+console.log('--------------------------------')
+
+/*
+Basic Mathematical Operations
+Your task is to create a function that does four basic mathematical operations.
+
+The function should take three arguments - operation(string/char), value1(number), value2(number).
+The function should return result of numbers after applying the chosen operation.
+
+Examples(Operator, value1, value2) --> output
+('+', 4, 7) --> 11
+('-', 15, 18) --> -3
+('*', 5, 5) --> 25
+('/', 49, 7) --> 7
+*/
+
+function basicOp(operation, value1, value2) {
+  switch (operation) {
+    case '+':
+      return value1 + value2;
+      
+    case '-':
+      return value1 - value2;
+          
+    case '*':
+      return value1 * value2;
+      
+    case '/':
+      return value1 / value2;
+
+    default:
+      return 0;
+  }
+}
+
+console.log(basicOp('+', 4, 7));
+console.log(basicOp('-', 15, 18));
+
+console.log('--------------------------------')
+
+/*
+Convert a String to a Number!
+Description
+We need a function that can transform a string into a number. What ways of achieving this do you know?
+
+Note: Don't worry, all inputs will be strings, and every string is a perfectly valid representation of an integral number.
+
+Examples
+"1234" --> 1234
+"605"  --> 605
+"1405" --> 1405
+"-7" --> -7
+*/
+
+const stringToNumber = function(str){
+  return Number(str); // The Number() method converts a value to a number. If the value cannot be converted, NaN is returned.
+}
+
+console.log(stringToNumber("1234")); // 1234
+console.log(stringToNumber("123456")); // 123456
+
+console.log('--------------------------------')
+
+/*
+Convert number to reversed array of digits
+
+Convert number to reversed array of digits
+Given a random non-negative number, you have to return the digits of this number within an array in reverse order.
+
+Example(Input => Output):
+35231 => [1,3,2,5,3]
+0 => [0]
+*/
+
+function digitize(n) {
+  return n.toString().split('').reverse().map(Number);
+} 
+
+console.log(digitize(987456));
+
+function digitize(n) {
+  // Convert the number into a string and split it into an array of its digits
+  let digitsAsString = n.toString();
+  let digitsAsArray = digitsAsString.split('');
+  
+  // Reverse the order of the array
+  let digitsAsArrayReversed = digitsAsArray.reverse();
+  
+  // Map each digit from a string to a number
+  let digitsAsNumbers = digitsAsArrayReversed.map(function(digitAsString) {
+    return Number(digitAsString);
+  });
+  
+  // Return the array of digits as numbers
+  return digitsAsNumbers;
+}
+
+console.log(digitize(35231));
+
+console.log('--------------------------------')
